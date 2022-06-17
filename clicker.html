@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Clicker</title>
+    </head>
+    <body>
+        <script>
+            var clicks = 0;
+            var sec = 0;
+            function getRandomPosition(element) {
+	var x = document.body.offsetHeight-element.clientHeight;
+	var y = document.body.offsetWidth-element.clientWidth;
+	var randomX = Math.floor(Math.random()*x);
+	var randomY = Math.floor(Math.random()*y);
+	return [randomX,randomY];
+}
+function spawnImageAtRandomPlace() {
+	var img = document.createElement('img');
+	img.setAttribute("style", "position:absolute;");
+	img.setAttribute("src", "data:image/png;base64,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");
+    img.setAttribute('onclick','imgOnClick();'); // for FF
+	img.setAttribute("id", "image");
+	document.body.appendChild(img);
+	var xy = getRandomPosition(img);
+	img.style.top = xy[0] + 'px';
+	img.style.left = xy[1] + 'px';
+}
+            function imgOnClick(){
+                var image = document.getElementById('image');
+                image.parentNode.removeChild(image);
+                clicks++;
+                document.getElementById('counter').innerHTML=clicks + " hits on target";
+                spawnImageAtRandomPlace();
+            }
+
+            function timer(){
+         
+         var timer = setInterval(function(){
+         document.getElementById('tablo').innerHTML= sec + " seconds passed!";
+         sec++;
+         if (sec < 0) {
+             clearInterval(timer);
+            }
+         if(sec >= 60){
+                alert("You've clicked on target " + clicks + " times! " );
+                clearTimeout(timer);
+                sec = 0;
+                clicks = 0;
+            }
+        }, 1000);
+}
+            function checkAndRunTimer(){
+                if(parseInt(sec) = 0){
+                    timer();
+                }
+            }
+        </script>
+        <p id="counter">0</p>
+        <br>
+        <p id="tablo">0</p>
+        <br>
+        <button onclick="spawnImageAtRandomPlace(); timer();">Start game</button>
+    </body>
+</html>
